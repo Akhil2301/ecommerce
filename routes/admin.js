@@ -50,7 +50,7 @@ router.get('/add-product',(req,res)=>{
 router.post('/add-product',(req,res)=>{
   productHelpers.addProduct(req.body,(result)=>{
     let image=req.files.image;
-  
+  console.log("hii")
     image.mv('./public/images/'+result+'.jpg',(err,done)=>{
       if(!err){
       
