@@ -1,0 +1,58 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center text-success">Edit product</h2>
+                <form action="/admin/edit-product/{{product._id}}" method="post" enctype="multipart/form-data">
+               
+                    <label>Name</label>
+                    <input type="text" name="Name" class="form-control" value="{{product.Name}}">
+                    <label>Category</label>
+                    {{!-- <input type="text" name="Category" class="form-control" value="{{product.Category}}"/>
+                      <label for="">Catagory</label> --}}
+                    
+                    <select name="Category" class="form-select" aria-label="Default select example">
+                        <option>{{product.Category}}</option>
+                        {{#each category}}
+
+                        <option value="{{this.Name}}">{{this.Name}}</option>
+                        {{/each}}
+                       
+
+                    </select>
+
+
+
+                    <label>Sub Category</label>
+                    {{!-- <input type="text" name="Category" class="form-control" value="{{product.Category}}"/>
+                      <label for="">Catagory</label> --}}
+                    
+                    <select name="SubCategory" class="form-select" aria-label="Default select example">
+                        <option>{{product.SubCategory}}</option>
+                        {{#each subcategory}}
+
+                        <option value="{{this.Name}}">{{this.Name}}</option>
+                        {{/each}}
+                       
+
+                    </select>
+                    <label>Price</label>
+                    <input type="text" name="price" class="form-control" value="{{product.price}}"/>
+
+                    <label>Description</label>
+                    <input type="text" name="description" class="form-control" value="{{product.description}}"/>
+                    {{!-- <label>Image</label>
+                    <img src="/images/{{product._id}}.jpg" style="height: 4rem; width: 3rem;" id="imgView"/> --}}
+                    {{!-- <input type="file" name="image" class="form-control" value="/images/{{product._id}}.jpg" onchange="viewImage(event)"/> --}}
+                    <button type="submit" class="btn btn-success mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+function viewImage(){
+    document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+}
+</script>

@@ -1,0 +1,171 @@
+
+<section>
+  <div class="text-center col-12 mt-5">
+    <div class="container  center-div border w-25 py-5">
+      <div class="title pb-4">
+        <div class="">
+          <h2>Sign-up</h2>
+        </div>
+        <span>Sign up</span>
+      </div>
+      <form action="/signup" method="post" role="form" enctype="application/x-www-form-urlencoded">
+        <div class="form-group py-2">
+          <input 
+            type="text"
+            class="form-control"
+            placeholder="First Name" 
+            name="fname" id="Name" onkeyup="validateName()"
+          />  
+          <span id="name-error"> </span>       
+        </div>
+         <div class="form-group py-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            name="lname" id="Lname" onkeyup="validateLName()"
+          />
+         <span id="name-error2"></span>
+        </div>
+        
+        <div class="form-group py-2">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter your email"
+            name="email" id="email" onkeyup="validateEmail()"
+          />
+         <span id="email-error"></span>
+        </div>
+         <div class="form-group py-2">
+          <input
+            type="phone"
+            class="form-control"
+            placeholder="phone"
+            name="phone" id="phone" onkeyup="validatePhone()"
+          />
+          <span id="phone-error"></span>
+          </div>
+          <div class="form-group py-2">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            name="password" id="PasId" onkeyup="validatepassword()"
+             
+          />
+          <span id="pass-Errorne"></span>
+        </div>    
+
+
+        <div class="form-group py-4">
+            <button type="submit" class="btn btn-success btn-block  w-100" onclick="return validateForm()">Submit</button>
+        </div> 
+        {{#if err_msg}}
+          <span>  {{err_msg}}  </span>
+        {{/if}} 
+        <a href="/login">Click here for login</a>           
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+    var nameError = document.getElementById('name-error');
+    var nameError2 = document.getElementById('name-error2');
+    var emailError = document.getElementById('email-error');
+    
+    var phoneError = document.getElementById('phone-error');
+    var passError=document.getElementById('pass-Errorne');
+    function validateName(){
+    var name = document.getElementById('Name').value;
+
+    if(name.length==0){
+        nameError.innerHTML= 'first Name is required';
+        return false;
+    }   
+    nameError.innerHTML = '<span class="fa fa-check-circle" style="color:Green">Success</span>';
+    return true;
+}
+ 
+ function validateLName(){
+    var Lname = document.getElementById('Lname').value;
+
+    if(Lname.length==0){
+        nameError2.innerHTML= 'last Name is required';
+        return false;
+    }
+   
+    nameError2.innerHTML = '<span class="fa fa-check-circle" style="color:Green">Success</span>';
+    return true;
+}
+
+function validateEmail(){
+    var email = document.getElementById('email').value;
+
+    if(email.length==0){
+        emailError.innerHTML='Email is required'
+        return false;
+    }
+    if(!email.match(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)){
+        emailError.innerHTML = 'Email invalid'
+        return false;
+    }
+    emailError.innerHTML = '<span class="fa fa-check-circle" style="color:Green">Success</span>';
+    return true;
+}
+
+
+function validatePhone(){
+  var phone = document.getElementById('phone').value;
+
+    if(phone.length==0){
+      phoneError.innerHTML='phone number required'
+        return false;
+    }
+    if(!phone.match(/^\d{10}$/)){
+      phoneError.innerHTML = 'phone invalid'
+        return false;
+    }
+    phoneError.innerHTML = '<span class="fa fa-check-circle" style="color:Green">Success</span>';
+    return true;
+}
+
+ function validatepassword(){
+    var pasvalue = document.getElementById('PasId').value;
+
+    if(pasvalue.length==0){
+        passError.innerHTML= 'Enter a Password';
+        return false;
+    }
+
+     if(!pasvalue.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}$/)){
+      passError.innerHTML = 'Must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters'
+        return false;
+    }
+   
+    passError.innerHTML = '<span class="fa fa-check-circle" style="color:Green">Success</span>';
+    return true;
+}
+
+ 
+function validateForm(){
+
+  if(!validateName()||!validateEmail()||!validateLName()||!validatepassword()||!validatePhone()){
+
+
+        alert("Please Fill Correctly");
+        setTimeout(function(){submitError.style.display='none';},3000);
+        window.location.href="/";
+       
+        return false;
+    }
+    
+    }
+
+
+
+
+
+
+</script> 

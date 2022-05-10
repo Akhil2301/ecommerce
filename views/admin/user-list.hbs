@@ -1,0 +1,44 @@
+<section>
+    <div class="container mt-4">
+
+     
+
+        <table class="table display" id="productid">
+            <thead>
+                <tr>
+                    {{!-- <th scope="col">#</th> --}}
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {{#each userlist}}
+                    <tr>
+                        {{!-- <th scope="row">1</th> --}}
+                        <td>{{ fname }} {{lname}}</td>
+                        <td>{{ email }}</td>
+                        <td>{{ phone}}</td>
+                        <td>{{#if status}}<span style="color: green;"> Active</span>{{else}}<span style="color: red;">Blocked</span>{{/if}}</td>
+                        
+                        <td>
+                            <a href="/admin/edit-user/{{this._id}}" class="btn btn-success">Edit</a>
+                        </td>
+                        <td>
+                           {{#if status}} <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger">Block{{else}}</a><a href="/admin/unblock-user/{{this._id}}" class="btn btn-danger">Unblock</a>{{/if}}
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+<script>
+    $(document).ready( function () {
+    $('#productid').DataTable();
+} );
+</script>

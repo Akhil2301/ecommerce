@@ -1,0 +1,91 @@
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
+<section>
+  <div class="text-center col-12 mt-5">
+    <div class="container  center-div border w-25 py-5">
+      <div class="title pb-4">
+        <div class="">
+          <h2>Sign-up</h2>
+        </div>
+        <span>Sign up</span>
+      </div>
+      <form action="/otp" method="post" role="form" enctype="application/x-www-form-urlencoded">
+
+        <div class="form-group py-2 hidden">
+          <input 
+            type="text"
+            class="form-control "
+            placeholder="First Name" 
+            name="fname" id="Name" value="{{name_body.fname}}"
+          />  
+          <span id="name-error"> </span>       
+        </div>
+         <div class="form-group py-2 hidden">
+          <input
+            type="text"
+            class="form-control "
+            placeholder="Last Name"
+            name="lname" id="Lname" value="  {{name_body.lname}}"
+          />
+         <span id="name-error2"></span>
+        </div>
+        
+        <div class="form-group py-2 hidden">
+          <input
+            type="email"
+            class="form-control "
+            placeholder="Enter your email"
+            name="email" id="email" value="{{name_body.email}}"
+          />
+         <span id="email-error"></span>
+        </div>
+         <div class="form-group py-2 hidden">
+          <input
+            type="phone"
+            class="form-control "
+            placeholder="phone"
+            name="phone" id="phone" value="{{name_body.phone}}"
+          />
+          <span id="phone-error"></span>
+          </div>
+          <div class="form-group py-2 hidden">
+          <input
+            type="password "
+            class="form-control "
+            placeholder="Password"
+            name="password" id="PasId" value="{{name_body.password}}"
+             
+          />
+          </div>
+   
+
+      <div class="form-group py-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="OTP"
+            name="OTP" id="PasId" value=""
+             
+          />
+          <span id="pass-Errorne"></span>
+        </div>  
+        <div class="form-group py-4">
+            <button type="submit" class="btn btn-success btn-block  w-100" >Submit</button>
+        </div> 
+      
+               
+      </form>
+    </div>
+  </div>
+</section>
+       
+         
+
+               
+      </form>
+    </div>
+  </div>
+</section>

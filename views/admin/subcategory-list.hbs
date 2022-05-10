@@ -1,0 +1,40 @@
+<section>
+    <div class="container mt-4">
+
+     <a href="/admin/add-subcategory" class="btn btn-success pb-2 ">Add Sub Category</a>
+
+        <table class="table display" id="productid">
+            <thead>
+                <tr>
+                    {{!-- <th scope="col">#</th> --}}
+                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {{#each categorylist}}
+                    <tr>
+                        {{!-- <th scope="row">1</th> --}}
+                        
+                        <td>{{ Name}}</td>                       
+                        
+                        <td>
+                            <a href="/admin/edit-subcategory/{{this._id}}" class="btn btn-success">Edit</a>
+                        </td>
+                        <td>
+                        <a href="/admin/delete-subcategory/{{this._id}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+<script>
+    $(document).ready( function () {
+    $('#productid').DataTable();
+} );
+</script>
