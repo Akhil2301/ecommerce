@@ -10,3 +10,43 @@ a {
   height: 430;
   width: 250;
 }
+
+
+
+
+.imageUpload input[type="file"] {
+  display: block;
+}
+.imageUpload .imageThumb {
+  max-height: 75px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+}
+.imageUpload .pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.imageUpload .remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.imageUpload .remove:hover {
+  background: white;
+  color: black;
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #6a11cb;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+  }

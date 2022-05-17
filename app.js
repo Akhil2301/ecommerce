@@ -4,6 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session=require('express-session');
+var hbs=require('express-handlebars');
+var fileUpload=require('express-fileupload'); 
+var userRouter = require('./routes/user');
+var adminRouter = require('./routes/admin');
+var productHelpers=require('./helpers/product-helpers');
 
 var  db=require('./config/config');
 db.connect((err)=>{
@@ -11,16 +16,16 @@ db.connect((err)=>{
   else console.log(`connection succeed`);
 });
 
-var userRouter = require('./routes/user');
-var adminRouter = require('./routes/admin');
-var productHelpers=require('./helpers/product-helpers');
-
-var hbs=require('express-handlebars');
-
-var fileUpload=require('express-fileupload'); 
-
 var app = express();
+var Hbs=hbs.create({});
 
+//register new fuction
+Hbs.handlebars.registerHelper('if_eq', function(a, b, opts) {
+  if(a == b) // Or === depending on your needs
+      return opts.fn(this);
+  else
+      return opts.inverse(this);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +39,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
 
+
+
 app.use((req,res,next)=>{
   if(!req.user){
       res.header('cache-control','private,no-cache,no-store,must revalidate')
@@ -43,7 +50,8 @@ app.use((req,res,next)=>{
   next();
 });
 
-app.use(session({secret:'Key',cookie:{maxAge: 6000000}}))
+
+app.use(session({secret:'Key'/*,cookie:{maxAge: 6000000}*/}))
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);

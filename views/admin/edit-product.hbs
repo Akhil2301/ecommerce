@@ -30,20 +30,20 @@
                     <select name="SubCategory" class="form-select" aria-label="Default select example">
                         <option>{{product.SubCategory}}</option>
                         {{#each subcategory}}
-
+ 
                         <option value="{{this.Name}}">{{this.Name}}</option>
                         {{/each}}
                        
 
                     </select>
                     <label>Price</label>
-                    <input type="text" name="price" class="form-control" value="{{product.price}}"/>
+                    <input type="number" name="price" class="form-control" value="{{product.price}}"/>
 
                     <label>Description</label>
                     <input type="text" name="description" class="form-control" value="{{product.description}}"/>
-                    {{!-- <label>Image</label>
-                    <img src="/images/{{product._id}}.jpg" style="height: 4rem; width: 3rem;" id="imgView"/> --}}
-                    {{!-- <input type="file" name="image" class="form-control" value="/images/{{product._id}}.jpg" onchange="viewImage(event)"/> --}}
+                    <label>Image</label>
+                    <img src="/images/{{product._id}}.jpg" style="height: 4rem; width: 3rem;" id="imgView"/> 
+                    <input type="file" name="image" class="form-control" value="/images/{{product._id}}.jpg" onchange="viewImage(event)"/>
                     <button type="submit" class="btn btn-success mt-3">Save</button>
                 </form>
             </div>
@@ -55,4 +55,4 @@
 function viewImage(){
     document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
 }
-</script>
+</script> 

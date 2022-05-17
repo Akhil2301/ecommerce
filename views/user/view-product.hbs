@@ -10,11 +10,12 @@
                                 <h5 class="card-title">{{ Name }}</h5>
                                 <p class="card-text">Rs {{ price }}</p>
                                 <p class="card-text">{{ description }}</p>
-                                <a href="#" class="btn btn-primary">{{ Category }}</a>
+                               
+                                <a href="/product-detailed/{{_id}}" class="btn btn-primary">{{ Category }}</a>
                             </div>
                         </div>
                     </div>
-                {{/each}}
+                {{/each}} 
             </div>
         </div>
     </section>

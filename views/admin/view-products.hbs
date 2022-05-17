@@ -1,14 +1,16 @@
 <section>
     <div class="container mt-4">
 
-        <a href="/admin/add-product" class="btn btn-success pb-2 ">Add Products</a>
+        <a href="/admin/add-product" class="btn btn-success pb-2 ">Add Products</a><br>
 
 
         <table class="table display" id="productid">
+            
             <thead>
+                
                 <tr>
                     {{!-- <th scope="col">#</th> --}}
-                    <th scope="col">Name</th>
+                    <th scope="col">Names</th>
                     <th scope="col">Category</th>
                      <th scope="col">Sub Category</th>
                      <th scope="col">Price</th>
@@ -48,9 +50,3 @@
 </section>
 
 
-
-<script>
-    $(document).ready( function () {
-    $('#productid').DataTable();
-} );
-</script>

@@ -1,7 +1,7 @@
 var express = require('express');
 const productHelpers = require('../helpers/product-helpers');
 const userHelper=require('../helpers/user-helper')
-
+const adminHelper=require('../helpers/admin-helper')
 var router = express.Router();
 
 
@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/add-product',(req,res)=>{
+router.get('/add-product', (req,res)=>{
   admininfo= req.session.user
   if(req.session.loggedInadmin){
    // res.render('admin/add-product',{admininfo,admin:true})
@@ -66,6 +66,8 @@ router.post('/add-product',(req,res)=>{
 })
 
 
+
+
 router.get('/user-list',(req,res)=>{
   admininfo= req.session.user
 
@@ -94,7 +96,7 @@ router.get('/delete-product/:id',(req,res)=>{
   let proid=req.params.id
   
   productHelpers.deleteProduct(proid).then((response)=>{
-    console.log('hi')
+   
     res.redirect('/admin');
    
   })
@@ -303,7 +305,7 @@ router.post('/add-subcatagory',(req,res)=>{
 
 router.get('/edit-subcategory/:id',async(req,res)=>{
   if(req.session.loggedInadmin){
-    admininfo= req.session.user
+
     let category=await userHelper.getsubcategoryDetails(req.params.id)
     
     res.render('admin/edit-subcategory',{category,admininfo,admin:true});
@@ -352,5 +354,14 @@ router.post('/edit-image/:id',(req,res)=>{
     }
  
  
+})
+
+router.get('/order',async(req,res)=>{
+  admininfo= req.session.user
+console.log('its me akhil')
+  let orders=await adminHelper.getOrderList(req.session.user._id)
+  
+  res.render('admin/order',{admininfo,orders,admin:true})
+
 })
 module.exports = router;

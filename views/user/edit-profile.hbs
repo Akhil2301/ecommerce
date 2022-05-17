@@ -1,0 +1,26 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center text-success">Edit Profile</h2>
+                <form action="/edit-profile/{{userDetail._id}}" method="post" enctype="multipart/form-data">
+               
+                    <label>First Name</label>
+                    <input type="text" name="fname" class="form-control" value="{{userDetail.fname}}">
+                    
+                    <label>Last Name</label>
+                    <input type="text" name="lname" class="form-control" value="{{userDetail.lname}}"/>
+
+                    <label>Email</label>
+                    <input type="text" name="email" class="form-control" disabled value="{{userDetail.email}}"/>
+                    <label>Phone</label>
+                    <input type="text" name="phone" class="form-control" value="{{userDetail.phone}}"/>
+                    
+                    <button type="submit" class="btn btn-success mt-3">Save</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
